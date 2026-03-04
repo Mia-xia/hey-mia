@@ -1,100 +1,88 @@
 "use client";
 import { useState } from "react";
 
+const copy = {
+  title1: "Hi, I'm Mia.",
+  title2: "I keep products moving",
+  subtitle:
+    "Bridging strategy and execution across developer ecosystems, community growth, and global markets.",
+  viewProjects: "View Projects",
+  getInTouch: "Get in Touch",
+  more: "More About Me",
+  about1:
+    "Structured and execution-driven at work, intuitive in life. I am especially drawn to AI-native products built for global markets.",
+  about2:
+    "In a fast-moving industry, I stay curious, keep learning, and commit to the work I believe in.",
+};
+
 export default function Hero() {
   const [expanded, setExpanded] = useState(false);
+  const t = copy;
 
   return (
     <section id="about" className="min-h-screen flex items-center">
-      <div className="max-w-3xl mx-auto px-6" style={{ paddingTop: 120, paddingBottom: 96 }}>
-        <p className="text-sm text-[var(--color-accent)] font-mono mb-4 tracking-wider uppercase">
-          Product Operations
-        </p>
-
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight mb-6">
-          Hi, I'm Mia.
+      <div className="max-w-4xl mx-auto px-6 pt-32 pb-24">
+        <h1 className="text-5xl sm:text-6xl font-semibold tracking-tight leading-[1.08]">
+          {t.title1}
           <br />
-          <span className="text-[var(--color-text-muted)]">
-            I keep products moving.
+          <span className="text-[var(--color-text-muted)] font-medium">
+            {t.title2}
           </span>
         </h1>
 
-        {/* Single-line subtitle */}
-        <p style={{ fontSize: 17, color: "#374151", marginBottom: 0, lineHeight: 1.6 }}>
-          Product Operations professional bridging strategy and execution —
-          across developer ecosystems, community growth, and global markets.
+        <p className="mt-8 max-w-2xl text-[15px] sm:text-base text-[var(--color-text-muted)] leading-7">
+          {t.subtitle}
         </p>
 
-        {/* CTAs — 32px below subtitle */}
-        <div className="flex items-center gap-4" style={{ marginTop: 32 }}>
+        <div className="flex items-center gap-3 mt-10">
           <a
             href="#projects"
-            className="px-5 py-2.5 bg-[var(--color-accent)] text-white rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
+            className="px-5 py-2.5 rounded-lg text-sm font-medium text-white bg-[var(--color-accent)] hover:opacity-90 transition-opacity"
           >
-            View Projects
+            {t.viewProjects}
           </a>
           <a
             href="mailto:xrr2023123@gmail.com"
-            className="px-5 py-2.5 border border-[var(--color-border)] rounded-lg text-sm font-medium hover:bg-[var(--color-surface-2)] transition-colors"
+            className="px-5 py-2.5 rounded-lg border border-[var(--color-border)] text-sm font-medium hover:bg-[var(--color-surface-2)] transition-colors"
           >
-            Get in Touch
+            {t.getInTouch}
           </a>
         </div>
 
-        {/* Collapsible "about me" */}
-        <div style={{ marginTop: 28 }}>
+        <div className="mt-8">
           <button
             type="button"
             onClick={() => setExpanded((v) => !v)}
-            style={{
-              fontSize: 14,
-              color: "#6B7280",
-              background: "none",
-              border: "none",
-              padding: 0,
-              cursor: "pointer",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 4,
-            }}
+            className="inline-flex items-center gap-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
           >
-            A bit more about me
+            {t.more}
             <span
-              style={{
-                display: "inline-block",
-                transition: "transform 250ms ease",
-                transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
-              }}
+              className={`inline-block transition-transform duration-300 ${
+                expanded ? "rotate-180" : "rotate-0"
+              }`}
               aria-hidden="true"
             >
               ↓
             </span>
           </button>
 
-          {/* Expandable content */}
           <div
-            style={{
-              maxHeight: expanded ? 400 : 0,
-              overflow: "hidden",
-              transition: "max-height 250ms ease",
-            }}
+            className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+              expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+            }`}
           >
-            <div
-              className="text-[var(--color-text-muted)] leading-relaxed space-y-4"
-              style={{
-                paddingTop: 16,
-                fontSize: 15,
-                opacity: expanded ? 1 : 0,
-                transition: "opacity 200ms ease",
-                transitionDelay: expanded ? "80ms" : "0ms",
-              }}
-            >
-              <p>An INFP who's structured and execution-driven at work, but intuitive in life. I'm drawn to live music, new experiences, and especially the fast-evolving AI landscape. I'm particularly excited about AI-native products built for global markets. I admire small but thoughtfully crafted products like Notion, Flomo, and Jike — tools that are simple, intentional, and deeply user-centered.</p>
-              <p>In an industry that moves at breakneck speed, I stay curious, keep learning, and commit fully to the work I believe in.</p>
+            <div className="overflow-hidden">
+              <div
+                className={`pt-5 max-w-2xl space-y-3 text-[15px] leading-7 text-[var(--color-text-muted)] transition-opacity duration-200 ${
+                  expanded ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <p>{t.about1}</p>
+                <p>{t.about2}</p>
+              </div>
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

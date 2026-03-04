@@ -49,9 +49,6 @@ export default function Experience() {
   return (
     <section id="experience" className="py-24 bg-[var(--color-surface-2)]">
       <div className="max-w-3xl mx-auto px-6">
-        <p className="text-xs font-mono text-[var(--color-accent)] uppercase tracking-widest mb-2">
-          Career
-        </p>
         <h2 className="text-2xl font-bold tracking-tight mb-12">Experience</h2>
 
         {/* Timeline container */}

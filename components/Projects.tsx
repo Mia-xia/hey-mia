@@ -1,21 +1,33 @@
 const projects = [
-  { title: "AI Writing Assistant", description: "Led 0 to 1 product development for an AI-powered writing tool. Grew to 50K MAU in 6 months.", tags: ["AI/ML", "B2C", "Growth"], link: "#" },
-  { title: "Developer Platform Redesign", description: "Redesigned API onboarding flow, reducing time-to-first-call from 45min to 8min.", tags: ["DevEx", "API", "B2B"], link: "#" },
-  { title: "Internal Analytics Dashboard", description: "Built a self-serve analytics tool adopted by 12 teams, replacing 3 external tools.", tags: ["Data", "Internal Tools"], link: "#" },
+  {
+    title: "AI Writing Assistant",
+    description:
+      "Led 0 to 1 product development for an AI-powered writing tool. Grew to 50K MAU in 6 months.",
+    tags: ["AI/ML", "B2C", "Growth"],
+    link: "#",
+  },
+  {
+    title: "Developer Platform Redesign",
+    description:
+      "Redesigned API onboarding flow, reducing time-to-first-call from 45min to 8min.",
+    tags: ["DevEx", "API", "B2B"],
+    link: "#",
+  },
+  {
+    title: "Apple News Agent",
+    description:
+      "Built an automated agent that tracks Apple-related updates and turns them into concise, readable news summaries.",
+    tags: ["AI Agent", "Automation", "News"],
+    link: "https://github.com/Mia-xia/apple-news-agent",
+  },
 ];
-function SectionHeader({ label, title }: { label: string; title: string }) {
-  return (
-    <div>
-      <p className="text-xs font-mono text-[var(--color-accent)] uppercase tracking-widest mb-2">{label}</p>
-      <h2 className="text-2xl font-bold tracking-tight">{title}</h2>
-    </div>
-  );
-}
+
 export default function Projects() {
+
   return (
     <section id="projects" className="py-24">
       <div className="max-w-3xl mx-auto px-6">
-        <SectionHeader label="Work" title="Selected Projects" />
+        <h2 className="text-2xl font-bold tracking-tight">Selected Projects</h2>
         <div className="grid sm:grid-cols-2 gap-4 mt-12">
           {projects.map((p) => (
             <a key={p.title} href={p.link} className="group p-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-2)] hover:border-[var(--color-accent)] transition-all duration-200">

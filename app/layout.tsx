@@ -1,20 +1,39 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
 export const metadata: Metadata = {
-  title: "Mia | Product Manager",
-  description: "Product Manager focused on AI products and developer tools.",
+  metadataBase: new URL("https://heymiax.com"),
+  title: {
+    default: "hey.mia",
+    template: "%s | hey.mia",
+  },
+  description:
+    "Mia Xia's personal website featuring product operations work, selected projects, and contact links.",
+  alternates: {
+    canonical: "/",
+  },
+  keywords: [
+    "Mia Xia",
+    "Product Operations",
+    "Developer Ecosystem",
+    "AI Agent",
+    "Portfolio",
+  ],
   openGraph: {
-    title: "Mia | Product Manager",
-    description: "Product Manager focused on AI products and developer tools.",
+    title: "hey.mia",
+    description:
+      "Product operations portfolio with selected projects, experience, and writing snippets.",
+    url: "https://heymiax.com",
+    siteName: "hey.mia",
+    locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "hey.mia",
+    description:
+      "Product operations portfolio with selected projects, experience, and writing snippets.",
   },
 };
 
@@ -25,7 +44,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.variable}>
+      <body>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           {children}
         </ThemeProvider>
