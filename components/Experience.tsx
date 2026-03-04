@@ -16,7 +16,7 @@ const experiences = [
   {
     company: "01.AI",
     role: "OS & DevRel — Project Operations",
-    period: "Jun 2022 — Dec 2022",
+    period: "May 2024 — Dec 2024",
     bullets: [
       "Led international developer relations initiatives, driving 5 app developments, 5 technical publications, and 1 ecosystem integration within a single month.",
       "Drafted and reviewed technical documents, project updates, and promotional content in English to support global outreach and align with international standards.",
