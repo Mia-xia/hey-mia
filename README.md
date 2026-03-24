@@ -56,3 +56,60 @@ After this, every push to `main` auto-deploys.
   - `/opengraph-image`
   - `/twitter-image`
 - Basic security headers configured in `next.config.ts`.
+
+## Email Tracking API
+
+This project includes a minimal tracking service for email marketing events.
+
+### Routes
+
+- `GET /track/open?id=<scholar_id>&ts=<timestamp>`
+  - Stores an `opened` event
+  - Returns a 1x1 transparent GIF
+- `GET /track/click?id=<scholar_id>&target=<url>`
+  - Stores a `clicked` event
+  - Redirects (`302`) to `target`
+- `POST /track/sent` (reserved for sender-side integration)
+  - Stores a `sent` event
+  - Body: `{ "id": "...", "sent_at": "...", "template_id": "..." }`
+
+### Storage
+
+- Preferred (persistent): Vercel KV REST API
+  - `KV_REST_API_URL`
+  - `KV_REST_API_TOKEN`
+- Fallback (local/dev): `data/tracking-events.jsonl`
+
+When KV is configured, events are written to:
+- `tracking:events:all`
+- `tracking:events:opened`
+- `tracking:events:clicked`
+- `tracking:events:sent`
+
+### Optional Security Env
+
+- `TRACKING_ALLOWED_HOSTS` (default: `www.bohrium.com`)
+  - Comma-separated allowlist for `/track/click` target hostnames
+- `TRACKING_ENFORCE_ALLOWED_HOSTS` (default: `true`)
+  - Set `false` to disable hostname allowlist enforcement
+
+### Local Verification
+
+```bash
+# Open event (returns GIF bytes)
+curl -i "http://localhost:3000/track/open?id=2u3v734g&ts=1710000000"
+
+# Click event (returns 302 redirect)
+curl -i "http://localhost:3000/track/click?id=2u3v734g&target=https%3A%2F%2Fwww.bohrium.com%2Fscholar%2F2u3v734g"
+
+# Sent event (optional sender hook)
+curl -i -X POST "http://localhost:3000/track/sent" \
+  -H "Content-Type: application/json" \
+  -d '{"id":"2u3v734g","template_id":"bohrium-scholar-v1"}'
+```
+
+If KV is not configured, inspect local events:
+
+```bash
+cat data/tracking-events.jsonl
+```
