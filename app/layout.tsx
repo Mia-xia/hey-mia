@@ -3,7 +3,7 @@ import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://heymiax.com"),
+  metadataBase: new URL("https://www.heymiax.com"),
   title: {
     default: "hey.mia",
     template: "%s | hey.mia",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "hey.mia",
     description:
       "Product operations portfolio with selected projects, experience, and writing snippets.",
-    url: "https://heymiax.com",
+    url: "https://www.heymiax.com",
     siteName: "hey.mia",
     locale: "en_US",
     type: "website",
@@ -34,6 +34,7 @@ export const metadata: Metadata = {
     title: "hey.mia",
     description:
       "Product operations portfolio with selected projects, experience, and writing snippets.",
+    site: "@Mia_01ai",
   },
 };
 

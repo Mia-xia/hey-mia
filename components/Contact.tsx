@@ -7,7 +7,7 @@ export default function Contact() {
   return (
     <section id="contact" className="py-24">
       <div className="max-w-3xl mx-auto px-6">
-        <h2 className="text-2xl font-bold tracking-tight mb-4">Let us talk</h2>
+        <h2 className="text-2xl font-bold tracking-tight mb-4">Let&apos;s talk</h2>
         <p className="text-[var(--color-text-muted)] mb-10 max-w-md">
           Open to new opportunities, collaborations, and good conversations.
         </p>
