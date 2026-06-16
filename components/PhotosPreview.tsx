@@ -12,7 +12,7 @@ export default function PhotosPreview() {
           <div>
             <h2 className="text-3xl font-semibold tracking-tight">Moments</h2>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-[var(--color-text-muted)]">
-              喜欢粗粒度的生活，不需要那么多的装饰、精致感，这本身就让我感到很有生命力了！
+              就这样继续记录下去吧
             </p>
           </div>
           <Link

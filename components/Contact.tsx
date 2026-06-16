@@ -11,7 +11,7 @@ const links: ContactLink[] = [
     href: "https://www.linkedin.com/in/mia-xia-81196b33b/",
     iconSrc: "/media/social/linkedin.png",
   },
-  { label: "Twitter", href: "https://x.com/Mia_01ai", iconSrc: "/media/social/twitter.png" },
+  { label: "X", href: "https://x.com/Mia_Bohrium", iconSrc: "/media/social/twitter.png" },
   { label: "Jike", href: "https://okjk.co/4VQR2Z", icon: "J" },
 ];
 export default function Contact() {

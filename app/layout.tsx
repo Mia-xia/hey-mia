@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: "hey.mia",
     description:
       "Writing, photos, product notes, and selected work from Mia Xia.",
-    site: "@Mia_01ai",
+    site: "@Mia_Bohrium",
   },
   icons: {
     icon: [

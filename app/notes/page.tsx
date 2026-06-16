@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import ArticleStats from "@/components/ArticleStats";
 import Nav from "@/components/Nav";
 import { formatArticleDate, getAllArticles } from "@/lib/articles";
-import { getArticleStats } from "@/lib/articleStats";
 
 export const metadata: Metadata = {
   title: "Notes",
@@ -16,7 +14,6 @@ export const metadata: Metadata = {
 
 export default async function WritingPage() {
   const articles = await getAllArticles();
-  const stats = await Promise.all(articles.map((article) => getArticleStats(article.slug)));
 
   return (
     <>
@@ -69,7 +66,6 @@ export default async function WritingPage() {
                       ))}
                     </div>
                   </div>
-                  <ArticleStats slug={article.slug} initialStats={stats[index]} />
                 </div>
               </article>
             ))}

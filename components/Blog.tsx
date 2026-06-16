@@ -1,12 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import ArticleStats from "@/components/ArticleStats";
 import { formatArticleDate, getFeaturedArticles } from "@/lib/articles";
-import { getArticleStats } from "@/lib/articleStats";
 
 export default async function Blog() {
   const articles = await getFeaturedArticles(3);
-  const stats = await Promise.all(articles.map((article) => getArticleStats(article.slug)));
 
   return (
     <section id="notes" className="py-24 bg-[var(--color-surface-2)]">
@@ -55,9 +52,6 @@ export default async function Blog() {
                     {article.excerpt}
                   </p>
                 ) : null}
-                <div className="mt-5">
-                  <ArticleStats slug={article.slug} initialStats={stats[index]} />
-                </div>
               </div>
             </article>
           ))}

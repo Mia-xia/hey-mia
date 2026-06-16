@@ -3,10 +3,8 @@ import { notFound } from "next/navigation";
 import { compileMDX } from "next-mdx-remote/rsc";
 import Image from "next/image";
 import Link from "next/link";
-import ArticleStats from "@/components/ArticleStats";
 import Nav from "@/components/Nav";
 import { formatArticleDate, getAllArticles, getArticleBySlug } from "@/lib/articles";
-import { getArticleStats } from "@/lib/articleStats";
 import { mdxComponents } from "@/mdx-components";
 
 type PageProps = {
@@ -44,7 +42,6 @@ export default async function ArticlePage({ params }: PageProps) {
   const article = await getArticleBySlug(slug);
   if (!article) notFound();
 
-  const stats = await getArticleStats(article.slug);
   const { content } = await compileMDX({
     source: article.content,
     components: mdxComponents,
@@ -77,9 +74,6 @@ export default async function ArticlePage({ params }: PageProps) {
                 {article.excerpt}
               </p>
             ) : null}
-            <div className="mt-6">
-              <ArticleStats slug={article.slug} initialStats={stats} trackView />
-            </div>
           </header>
 
           <div className="mt-10 overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-2)]">
