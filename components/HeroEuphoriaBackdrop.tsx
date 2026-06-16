@@ -8,7 +8,7 @@ export default function HeroEuphoriaBackdrop() {
   const src = [
     `https://www.youtube-nocookie.com/embed/${videoId}`,
     `?autoplay=1`,
-    `&mute=0`,
+    `&mute=1`,
     `&controls=0`,
     `&playsinline=1`,
     `&loop=1`,
