@@ -494,6 +494,16 @@ body {
   transition: transform 260ms ease, box-shadow 260ms ease;
 }
 
+.moments-masonry {
+  display: none;
+}
+
+.moments-masonry-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
 .moments-mosaic-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 18px 45px color-mix(in oklab, var(--color-text) 14%, transparent);
@@ -718,8 +728,14 @@ body {
 
 @media (min-width: 1040px) {
   .moments-mosaic {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    display: none;
+  }
+
+  .moments-masonry {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.82fr);
     gap: 1.25rem;
+    align-items: start;
   }
 }
 
