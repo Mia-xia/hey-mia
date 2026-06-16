@@ -710,13 +710,24 @@ body {
 
 @media (min-width: 700px) {
   .moments-mosaic {
-    columns: 2;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .moments-mosaic-card {
+    display: block;
+    margin: 0;
+  }
+
+  .moments-mosaic-card[data-first-row="true"] {
+    --moment-shift: 0;
   }
 }
 
 @media (min-width: 1040px) {
   .moments-mosaic {
-    columns: 3;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 

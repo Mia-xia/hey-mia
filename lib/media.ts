@@ -13,15 +13,6 @@ export type MediaItem = {
 
 export const mediaItems: MediaItem[] = [
   {
-    id: "polaroid-dinner",
-    kind: "photo",
-    title: "📍 徐州相聚",
-    caption: "",
-    src: "/media/photos/polaroid-dinner.jpg",
-    alt: "A polaroid photo held above a dinner table",
-    featured: true,
-  },
-  {
     id: "polaroid-table",
     kind: "photo",
     title: "相聚河流",
@@ -37,6 +28,15 @@ export const mediaItems: MediaItem[] = [
     caption: "",
     src: "/media/photos/moment-1017.jpg",
     alt: "A polaroid photo held above a table with markers",
+    featured: true,
+  },
+  {
+    id: "polaroid-dinner",
+    kind: "photo",
+    title: "📍 徐州相聚",
+    caption: "",
+    src: "/media/photos/polaroid-dinner.jpg",
+    alt: "A polaroid photo held above a dinner table",
     featured: true,
   },
   {
