@@ -29,7 +29,6 @@ export default function PhotosPage() {
                 key={item.id}
                 className="moments-mosaic-card"
                 data-size={index % 5}
-                data-first-row={index < 2 ? "true" : undefined}
               >
                 {item.kind === "live" ? (
                   <div className="px-0 [&_figure]:my-0 [&_figcaption]:hidden">
