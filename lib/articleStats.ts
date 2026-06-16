@@ -18,7 +18,9 @@ type LocalArticleStats = ArticleStats & {
   baseViews?: number;
 };
 
-const LOCAL_DATA_DIR = path.join(process.cwd(), "data");
+const LOCAL_DATA_DIR = process.env.VERCEL
+  ? path.join("/tmp", "heymia")
+  : path.join(process.cwd(), "data");
 const LOCAL_FILE = path.join(LOCAL_DATA_DIR, "article-stats.json");
 const LOCAL_LOCK_FILE = path.join(LOCAL_DATA_DIR, "article-stats.lock");
 
