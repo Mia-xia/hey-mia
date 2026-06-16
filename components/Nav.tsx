@@ -26,8 +26,8 @@ export default function Nav() {
           <Link href="/" className="site-mark" aria-label="Hey Mia home">
             <span>to be continued</span>
           </Link>
-          <div className="flex items-center gap-3">
-            <ul className="flex items-center gap-1">
+          <div className="site-nav-actions flex items-center gap-3">
+            <ul className="site-nav-list flex items-center gap-1">
               {links.map((l) => (
                 <li key={l.href}>
                   <Link

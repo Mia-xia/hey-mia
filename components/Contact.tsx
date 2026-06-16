@@ -19,9 +19,9 @@ export default function Contact() {
     <section id="contact" className="py-24">
       <div className="max-w-3xl mx-auto px-6">
         <h2 className="text-2xl font-bold tracking-tight mb-10">🤝</h2>
-        <div className="flex flex-wrap gap-4">
+        <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:gap-4">
           {links.map((l) => (
-            <a key={l.label} href={l.href} target={l.href.startsWith("mailto") ? undefined : "_blank"} rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all text-sm font-medium">
+            <a key={l.label} href={l.href} target={l.href.startsWith("mailto") ? undefined : "_blank"} rel="noopener noreferrer" className="flex min-h-12 items-center justify-center gap-2 rounded-lg border border-[var(--color-border)] px-3 py-2.5 text-sm font-medium transition-all hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] sm:min-h-0 sm:justify-start sm:px-4">
               {l.iconSrc ? (
                 <Image src={l.iconSrc} alt="" width={18} height={18} className="rounded-[4px]" />
               ) : (

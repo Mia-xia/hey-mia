@@ -11,7 +11,7 @@ export default async function Blog() {
   return (
     <section id="notes" className="py-24 bg-[var(--color-surface-2)]">
       <div className="max-w-5xl mx-auto px-6">
-        <div className="flex items-end justify-between gap-6">
+        <div className="flex flex-col items-start justify-between gap-5 sm:flex-row sm:items-end sm:gap-6">
           <div>
             <h2 className="text-3xl font-semibold tracking-tight">Notes</h2>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-[var(--color-text-muted)]">
@@ -26,7 +26,7 @@ export default async function Blog() {
           </Link>
         </div>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {articles.map((article, index) => (
             <article
               key={article.slug}
