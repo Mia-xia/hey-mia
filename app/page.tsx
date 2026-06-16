@@ -1,10 +1,8 @@
-"use client";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import Projects from "@/components/Projects";
-import Experience from "@/components/Experience";
 import Blog from "@/components/Blog";
 import Contact from "@/components/Contact";
+import PhotosPreview from "@/components/PhotosPreview";
 
 export default function Home() {
   return (
@@ -12,13 +10,12 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <Projects />
-        <Experience />
         <Blog />
+        <PhotosPreview />
         <Contact />
       </main>
       <footer className="py-8 text-center text-xs text-[var(--color-text-muted)] border-t border-[var(--color-border)]">
-        © {new Date().getFullYear()} Mia. Built with Next.js.
+        Be water, my dear friend
       </footer>
     </>
   );

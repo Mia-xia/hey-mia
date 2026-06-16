@@ -1,16 +1,16 @@
 # hey-mia
 
-Personal website of Mia Xia.
+Personal website of Mia Xia: writing, photos, moments, and contact links.
 
 Built with Next.js, React, TypeScript, and Tailwind CSS v4. Supports light/dark mode.
 
-## Sections
+## Sections and Routes
 
-- **Hero** — intro, CTAs, and collapsible bio
-- **Projects** — selected projects (including Apple News Agent)
-- **Experience** — interactive accordion timeline
-- **Blog** — concise writing cards
-- **Contact** — links to email, LinkedIn, and Twitter/X
+- **Home (`/`)** — intro, latest notes, featured moments, and contact
+- **Notes (`/notes`)** — MDX article index with cover media, likes, and read counts
+- **Article (`/notes/[slug]`)** — MDX article pages with inline photos, videos, and Live Photo-style embeds
+- **Moments (`/moments`)** — gallery for still photos and visual fragments
+- **Contact** — links to email, LinkedIn, Twitter/X, and Jike
 
 ## Tech Stack
 
@@ -18,7 +18,35 @@ Built with Next.js, React, TypeScript, and Tailwind CSS v4. Supports light/dark 
 - [React 19](https://react.dev/)
 - [Tailwind CSS v4](https://tailwindcss.com/)
 - [next-themes](https://github.com/pacocoursey/next-themes) for dark mode
+- [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) and [gray-matter](https://github.com/jonschlinkert/gray-matter) for local MDX articles
 - TypeScript
+
+## Writing and Media
+
+Articles live in `content/articles/*.mdx`. Each article has frontmatter:
+
+```md
+---
+title: "Article title"
+date: "2026-06-15"
+excerpt: "Short summary"
+tags:
+  - Writing
+cover: "/media/covers/example.svg"
+coverAlt: "Cover description"
+language: "mixed"
+media:
+  - quiet-window
+---
+```
+
+Supported MDX media components:
+
+- `<MediaImage src="/media/moments/photo.jpg" alt="..." caption="..." />`
+- `<MediaVideo src="/media/videos/clip.mp4" poster="/media/moments/poster.jpg" caption="..." />`
+- `<LivePhoto poster="/media/live/item.jpg" video="/media/live/item.mp4" alt="..." caption="..." />`
+
+Static media should live under `public/media/`. For Live Photo-style media, export a still poster plus a short video and reference both paths.
 
 ## Getting Started
 
@@ -48,14 +76,50 @@ git push origin main
 
 After this, every push to `main` auto-deploys.
 
+## Analytics
+
+GA4 is optional and controlled by an environment variable. Create a GA4 web data stream, copy the measurement ID, then set this in Vercel:
+
+```bash
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+If the variable is absent, no Google Analytics scripts are loaded. The implementation uses Google tag / `gtag.js` through Next.js `next/script`, and tracks page views across App Router navigations.
+
 ## Production Checklist
 
 - `metadataBase`, canonical, Open Graph, and Twitter metadata configured.
 - Dynamic `robots.txt` and `sitemap.xml` configured.
-- Open Graph share image routes configured:
-  - `/opengraph-image`
-  - `/twitter-image`
+- Browser icons configured through `app/icon.png`, `app/apple-icon.png`, and explicit metadata.
 - Basic security headers configured in `next.config.ts`.
+
+## Article Stats API
+
+Article likes and read counts use the same Vercel KV REST style as the email tracking API.
+
+### Routes
+
+- `GET /api/articles/<slug>/stats`
+  - Returns `{ "likes": number, "views": number }`
+- `POST /api/articles/<slug>/like`
+  - Increments likes by 1 on every click
+- `POST /api/articles/<slug>/view`
+  - Increments views by 1 on every article page open
+
+### Storage
+
+- Preferred (persistent): Vercel KV REST API
+  - `KV_REST_API_URL`
+  - `KV_REST_API_TOKEN`
+- Fallback (local/dev): `data/article-stats.json`
+
+### Local Verification
+
+```bash
+curl -s "http://localhost:3000/api/articles/first-note/stats"
+curl -s -X POST "http://localhost:3000/api/articles/first-note/like"
+curl -s -X POST "http://localhost:3000/api/articles/first-note/view"
+```
 
 ## Email Tracking API
 
