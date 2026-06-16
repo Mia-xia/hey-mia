@@ -3,7 +3,7 @@ import MomentsCarousel from "@/components/MomentsCarousel";
 import { getFeaturedMedia } from "@/lib/media";
 
 export default function PhotosPreview() {
-  const items = getFeaturedMedia(3);
+  const items = getFeaturedMedia(4);
 
   return (
     <section id="moments" className="py-24">

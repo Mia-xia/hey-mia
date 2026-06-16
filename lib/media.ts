@@ -40,6 +40,15 @@ export const mediaItems: MediaItem[] = [
     featured: true,
   },
   {
+    id: "festival-to-hiking",
+    kind: "photo",
+    title: "说好下次不去音乐节了，去爬山！",
+    caption: "",
+    src: "/media/photos/festival-to-hiking.jpg",
+    alt: "Friends walking together at night after making plans to go hiking next time",
+    featured: true,
+  },
+  {
     id: "sunset-mountain",
     kind: "photo",
     title: "美好晚霞",
