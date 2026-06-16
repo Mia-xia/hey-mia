@@ -40,13 +40,13 @@ export default function ArticleStats({
 
     const visitorId = getVisitorId();
     const url = trackView
-      ? `/api/articles/${slug}/view`
+      ? `/api/articles/${slug}/stats`
       : `/api/articles/${slug}/stats?visitorId=${encodeURIComponent(visitorId)}`;
     const options = trackView
       ? {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ visitorId }),
+          body: JSON.stringify({ action: "view", visitorId }),
         }
       : undefined;
 
@@ -65,10 +65,10 @@ export default function ArticleStats({
   function like() {
     startTransition(async () => {
       const visitorId = getVisitorId();
-      const res = await fetch(`/api/articles/${slug}/like`, {
+      const res = await fetch(`/api/articles/${slug}/stats`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ visitorId }),
+        body: JSON.stringify({ action: "like", visitorId }),
       });
       if (res.ok) setStats((await res.json()) as Stats);
     });
